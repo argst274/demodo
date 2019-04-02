@@ -1,0 +1,15 @@
+#!/bin/bash
+set -exuo pipefail
+
+#LAP Stack (no MySQL)
+sudo apt update
+sudo apt install apache2 install php libapache2-mod-php php-mysql
+
+#Allow Web Traffic on UFW Firewall
+sudo ufw allow in "Apache Full"
+
+#Set Apache to use PHP over HTML
+sed -i 's/index.html index.cgi index.pl index.php index.xhtml index.htm/index.php index.html index.cgi index.pl index.xhtml index.htm/g' /etc/apache2/mods-enabled/dir.conf
+
+#Restart Apache
+sudo systemctl restart apache2
