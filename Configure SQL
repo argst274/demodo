@@ -1,0 +1,15 @@
+#Configure MySQL
+
+SQLUSERNAME=$1
+SQLPASSWORD=$2
+SQLSERVRE=$3
+
+
+#Install MySQL client
+sudo apt update
+sudo apt install apache2 install mysql
+
+#Connect to MySQL
+mysql --host SQLSERVER=$3 --user SQLUSERNAME@SERVER_NAME -p SQLPASSWORD
+CREATE DATABASE owncloud;
+exit
