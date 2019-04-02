@@ -1,9 +1,10 @@
 #Configure MySQL
+#!/bin/bash
+set -exuo pipefail
 
 SQLUSERNAME=$1
 SQLPASSWORD=$2
 SQLSERVRE=$3
-
 
 #Install MySQL client
 sudo apt update
