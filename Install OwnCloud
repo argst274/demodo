@@ -1,6 +1,8 @@
 #!/bin/bash
 set -exuo pipefail
 
+SERVERNAME=$1
+
 #download owncloud release key 
 curl https://download.owncloud.org/download/repositories/10.0/Ubuntu_18.04/Release.key | sudo apt-key add -
 
@@ -10,4 +12,6 @@ echo 'deb http://download.owncloud.org/download/repositories/10.0/Ubuntu_18.04/ 
 #install aoacge andowncloud
 sudo apt update
 sudo apt install php-bz2 php-curl php-gd php-imagick php-intl php-mbstring php-xml php-zip owncloud-files
+
+sudo nano /etc/apache2/sites-enabled/SERVERNAME.conf
 
