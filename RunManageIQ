@@ -1,0 +1,8 @@
+#!/bin/bash
+set -exuo pipefail
+
+sudo apt update
+sudo apt install docker.io -y
+
+sudo docker pull manageiq/manageiq:hammer-4
+sudo docker run -d -p 8443:443 manageiq/manageiq:hammer-4
