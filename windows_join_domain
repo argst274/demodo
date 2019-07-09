@@ -1,0 +1,15 @@
+#Join specified domain
+
+param (    
+    [Parameter(Mandatory=$true)][string]$netbiosdomainname,
+    [Parameter(Mandatory=$true)][string]$dc_username,
+	[Parameter(Mandatory=$true)][string]$dc_password,
+    [Parameter(Mandatory=$true)][string]$fqdn
+)
+
+$decodedPassword = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($dc_password))
+
+$Secure_String_Pwd = $decodedPassword | ConvertTo-SecureString -AsPlainText -Force
+$username = "$netbiosdomainname\$dc_username" 
+$credential = New-Object System.Management.Automation.PSCredential($username,$Secure_String_Pwd)
+Add-Computer -DomainName "$fqdn" -Credential $credential
